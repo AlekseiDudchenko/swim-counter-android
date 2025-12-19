@@ -1,7 +1,7 @@
 package com.dudchenko.swimcounter.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.dudchenko.swimcounter.model.SessionState
+import com.dudchenko.swimcounter.model.TrainingState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -9,47 +9,52 @@ import kotlin.math.max
 
 class SessionViewModel : ViewModel() {
 
-    private val _state = MutableStateFlow(SessionState())
-    val state: StateFlow<SessionState> = _state
-
-    private val distancePerCycle = 50
+    private val _state = MutableStateFlow(TrainingState())
+    val state: StateFlow<TrainingState> = _state
 
     fun addCycle() {
         update {
             it.copy(
-                cycles = it.cycles + 1,
-                totalDistance = it.totalDistance + distancePerCycle
+                setCycles = it.setCycles + 1,
+                sessionCycles = it.sessionCycles + 1,
+                trainingCycles = it.trainingCycles + 1
             )
         }
     }
 
     fun removeCycle() {
         update {
-            if (it.cycles > 0) {
-                it.copy(
-                    cycles = it.cycles - 1,
-                    totalDistance = it.totalDistance - distancePerCycle
-                )
-            } else {
-                it
-            }
+            it.copy(
+                setCycles = maxOf(0, it.setCycles - 1)
+            )
         }
     }
 
     fun addSet() {
-        update { it.copy(sets = it.sets + 1, cycles = 0) }
+        update {
+            it.copy(
+                sessionSets = it.sessionSets + 1,
+                setCycles = 0
+            )
+        }
     }
 
     fun removeSet() {
-        update { it.copy(sets = max(0, it.sets - 1)) }
+        update { it.copy(sessionSets = max(0, it.sessionSets - 1)) }
     }
 
     fun resetSession() {
-        _state.value = SessionState()
+        update {
+            it.copy(
+                setCycles = 0,
+                sessionSets = 0,
+                sessionCycles = 0
+            )
+        }
     }
 
     private inline fun update(
-        reducer: (SessionState) -> SessionState
+        reducer: (TrainingState) -> TrainingState
     ) {
         _state.value = reducer(_state.value)
     }

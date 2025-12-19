@@ -1,54 +1,49 @@
 package com.dudchenko.swimcounter.ui.components
-
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun CounterBlock(
     title: String,
     value: String,
-    onPlus: () -> Unit,
+    minusLabel: String,
+    plusLabel: String,
     onMinus: () -> Unit,
-    plusButtonText: String = "+1",
-    plusButtonSize: Dp = 120.dp
+    onPlus: () -> Unit
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+        modifier = Modifier.fillMaxWidth()
     ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleLarge
-        )
-
-        Text(
-            text = value,
-            style = MaterialTheme.typography.displayMedium
-        )
+        Text(text = title, style = MaterialTheme.typography.titleMedium)
+        Text(text = value, style = MaterialTheme.typography.displaySmall)
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceAround,
-            verticalAlignment = Alignment.CenterVertically
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            modifier = Modifier.fillMaxWidth()
         ) {
             Button(
                 onClick = onMinus,
-                modifier = Modifier.height(56.dp)
+                modifier = Modifier
+                    .weight(1f)
+                    .height(52.dp)
             ) {
-                Text("-1")
+                Text(minusLabel)
             }
 
+            // plus button
             Button(
                 onClick = onPlus,
-                modifier = Modifier.size(plusButtonSize),
-                shape = CircleShape
+                modifier = Modifier
+                    .weight(2f)
+                    .height(80.dp)
             ) {
-                Text(plusButtonText, style = MaterialTheme.typography.displayMedium)
+                Text(plusLabel)
             }
         }
     }
