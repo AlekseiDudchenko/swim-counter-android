@@ -13,8 +13,10 @@ fun CounterBlock(
     value: String,
     minusLabel: String,
     plusLabel: String,
+    minusEnabled: Boolean,
+    plusEnabled: Boolean,
     onMinus: () -> Unit,
-    onPlus: () -> Unit
+    onPlus: () -> Unit,
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -29,6 +31,7 @@ fun CounterBlock(
         ) {
             Button(
                 onClick = onMinus,
+                enabled = minusEnabled,
                 modifier = Modifier
                     .weight(1f)
                     .height(52.dp)
@@ -39,6 +42,7 @@ fun CounterBlock(
             // plus button
             Button(
                 onClick = onPlus,
+                enabled = plusEnabled,
                 modifier = Modifier
                     .weight(2f)
                     .height(80.dp)

@@ -23,7 +23,7 @@ fun TrainingScreen(viewModel: SessionViewModel) {
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(24.dp),
+        verticalArrangement = Arrangement.spacedBy(24.dp), // 16
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -57,6 +57,8 @@ fun TrainingScreen(viewModel: SessionViewModel) {
             value = "${state.setDistanceMeters} m",
             minusLabel = "–50",
             plusLabel = "+50",
+            minusEnabled = state.setDistanceMeters > 0,
+            plusEnabled = true,
             onMinus = viewModel::removeCycle,
             onPlus = viewModel::addCycle
         )
@@ -67,6 +69,8 @@ fun TrainingScreen(viewModel: SessionViewModel) {
             value = state.sessionSets.toString(),
             minusLabel = "–1",
             plusLabel = "+1",
+            minusEnabled = state.sessionSets > 0,
+            plusEnabled = state.sessionDistanceMeters > 0,
             onMinus = viewModel::removeSet,
             onPlus = viewModel::addSet
         )
