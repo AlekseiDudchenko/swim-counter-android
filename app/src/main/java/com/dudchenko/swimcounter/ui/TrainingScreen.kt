@@ -49,7 +49,7 @@ fun TrainingScreen(viewModel: SessionViewModel) {
             valueStyle = MaterialTheme.typography.headlineMedium
         )
 
-        Divider()
+        HorizontalDivider()
 
         // ③ CURRENT SET (cycles)
         CounterBlock(
