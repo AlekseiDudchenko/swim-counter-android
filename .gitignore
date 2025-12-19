@@ -1,0 +1,78 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# =========================
+# Android Studio
+# =========================
+.idea/
+*.iml
+
+# =========================
+# Gradle
+# =========================
+.gradle/
+build/
+**/build/
+
+# =========================
+# Local configuration
+# =========================
+local.properties
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# OS generated files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Kotlin
+# =========================
+*.class
+*.jar
+
+# =========================
+# NDK / CMake (if ever used)
+# =========================
+.externalNativeBuild/
+.cxx/
+
+# =========================
+# Android captures
+# =========================
+captures/
+
+# =========================
+# Keystore files (IMPORTANT)
+# =========================
+*.jks
+*.keystore
+
+# =========================
+# Compose / tooling cache
+# =========================
+.compose/
+
+# =========================
+# Emulator / AVD (local only)
+# =========================
+*.hprof
+
