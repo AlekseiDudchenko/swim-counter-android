@@ -15,7 +15,7 @@ fun ReadOnlyMetric(
     valueStyle: TextStyle,
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(1.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
         Text(text = label, style = MaterialTheme.typography.labelLarge)

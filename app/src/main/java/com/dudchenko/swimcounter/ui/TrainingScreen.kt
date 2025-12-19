@@ -33,13 +33,14 @@ fun TrainingScreen(viewModel: SessionViewModel) {
             value = "${state.trainingDistanceMeters} m",
             valueStyle = MaterialTheme.typography.headlineLarge
         )
+        // TODO add second column with exercise counter (incremented by clicking "Next Exercise"
 
         HorizontalDivider()
 
         // ② SESSION
-        SectionHeader("SESSION")
+        SectionHeader("EXERCISE")
         ReadOnlyMetric(
-            label = "Session distance",
+            label = "Exercise distance",
             value = "${state.sessionDistanceMeters} m",
             valueStyle = MaterialTheme.typography.headlineMedium
         )
@@ -54,9 +55,9 @@ fun TrainingScreen(viewModel: SessionViewModel) {
         // ③ CURRENT SET (cycles)
         CounterBlock(
             title = "CURRENT SET",
-            value = "${state.setDistanceMeters} m",
+            value = "${state.setDistanceMeters} m / ${state.setCycles * 2} Bahnen",
             minusLabel = "–50",
-            plusLabel = "+50",
+            plusLabel = "+50m / 2 Bahnen",
             minusEnabled = state.setDistanceMeters > 0,
             plusEnabled = true,
             onMinus = viewModel::removeCycle,

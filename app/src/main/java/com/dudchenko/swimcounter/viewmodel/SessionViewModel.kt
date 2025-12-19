@@ -24,9 +24,15 @@ class SessionViewModel : ViewModel() {
 
     fun removeCycle() {
         update {
-            it.copy(
-                setCycles = maxOf(0, it.setCycles - 1)
-            )
+            if (it.setCycles == 0) {
+                it // nothing to remove
+            } else {
+                it.copy(
+                    setCycles = it.setCycles - 1,
+                    sessionCycles = maxOf(0, it.sessionCycles - 1),
+                    trainingCycles = maxOf(0, it.trainingCycles - 1)
+                )
+            }
         }
     }
 
@@ -40,7 +46,15 @@ class SessionViewModel : ViewModel() {
     }
 
     fun removeSet() {
-        update { it.copy(sessionSets = max(0, it.sessionSets - 1)) }
+        update {
+            if (it.sessionSets == 0) {
+                it
+            } else {
+                it.copy(
+                    sessionSets = it.sessionSets - 1
+                )
+            }
+        }
     }
 
     fun resetSession() {
