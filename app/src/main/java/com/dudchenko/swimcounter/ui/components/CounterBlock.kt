@@ -1,9 +1,12 @@
 package com.dudchenko.swimcounter.ui.components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -11,7 +14,9 @@ fun CounterBlock(
     title: String,
     value: String,
     onPlus: () -> Unit,
-    onMinus: () -> Unit
+    onMinus: () -> Unit,
+    plusButtonText: String = "+1",
+    plusButtonSize: Dp = 120.dp
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -27,21 +32,23 @@ fun CounterBlock(
         )
 
         Row(
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
                 onClick = onMinus,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.height(56.dp)
             ) {
-                Text("–")
+                Text("-1")
             }
 
             Button(
                 onClick = onPlus,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.size(plusButtonSize),
+                shape = CircleShape
             ) {
-                Text("+")
+                Text(plusButtonText, style = MaterialTheme.typography.displayMedium)
             }
         }
     }

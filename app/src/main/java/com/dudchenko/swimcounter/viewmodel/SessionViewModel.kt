@@ -14,8 +14,6 @@ class SessionViewModel : ViewModel() {
 
     private val distancePerCycle = 50
 
-    /* -------- Distance (cycles) -------- */
-
     fun addCycle() {
         update {
             it.copy(
@@ -38,8 +36,6 @@ class SessionViewModel : ViewModel() {
         }
     }
 
-    /* -------- Sets -------- */
-
     fun addSet() {
         update { it.copy(sets = it.sets + 1, cycles = 0) }
     }
@@ -48,13 +44,9 @@ class SessionViewModel : ViewModel() {
         update { it.copy(sets = max(0, it.sets - 1)) }
     }
 
-    /* -------- Session -------- */
-
     fun resetSession() {
         _state.value = SessionState()
     }
-
-    /* -------- Internal -------- */
 
     private inline fun update(
         reducer: (SessionState) -> SessionState
